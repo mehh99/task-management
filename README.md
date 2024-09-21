@@ -108,6 +108,35 @@ Before you begin, ensure you have the following installed:
       "done": true
     }
     ```
+    ### Task Completion Endpoint
+
+- **POST /complete/**
+  - **Description**: Mark a task as completed.
+  - **Authorization**: Requires token authentication.
+  - **Request Body**:
+    ```json
+    {
+      "task_id": 1 // ID of the task to mark as completed
+    }
+    ```
+  - **Response**:
+    ```json
+    {
+      "done": true
+    }
+    ```
+  - **Responses on Failure**:
+    ```json
+    {
+      "error": "Task not found" // If the task with the specified ID does not exist
+    }
+    ```
+    ```json
+    {
+      "error": "NOT NULL constraint failed: todo_task.due" // If the due date is not provided when required
+    }
+    ```
+
 
 ## Error Handling
 Common error responses include:
