@@ -1,142 +1,27 @@
-Task Management API
-This API allows users to manage their tasks. Users can create, update, complete, and delete tasks. The API is secured with token authentication for safety.
+# Task Management API
 
-Features
-User Authentication: Utilizes token-based authentication for user security.
-Task Management: Users can create, retrieve, update, and delete tasks.
-Task Completion: Users can mark tasks as completed.
-Technologies Used
-Django
-Django REST Framework
-SQLite (or other databases)
-Endpoints
-1. Sign In
-URL: /signin/
-Method: POST
-Body:
-json
-Copy code
-{
-    "username": "your_username",
-    "password": "your_password"
-}
-Response:
-json
-Copy code
-{
-    "authenticated": true,
-    "token": "Token your_token_here"
-}
-2. Get All Tasks
-URL: /all/
-Method: GET
-Headers:
-makefile
-Copy code
-Authorization: Token your_token_here
-Response:
-json
-Copy code
-{
-    "tasks": [
-        {
-            "id": 1,
-            "description": "Task description",
-            "due": "2024-09-30",
-            "is_completed": false
-        }
-    ]
-}
-3. Create New Task
-URL: /new/
-Method: POST
-Headers:
-makefile
-Copy code
-Authorization: Token your_token_here
-Body:
-json
-Copy code
-{
-    "description": "Task description",
-    "due": "2024-09-30"
-}
-Response:
-json
-Copy code
-{
-    "done": true
-}
-4. Update Task
-URL: /update/
-Method: POST
-Headers:
-makefile
-Copy code
-Authorization: Token your_token_here
-Body:
-json
-Copy code
-{
-    "task_id": 1,
-    "description": "New description",
-    "due_in": 5  // Adds 5 days from today
-}
-Response:
-json
-Copy code
-{
-    "done": true
-}
-5. Complete Task
-URL: /complete/
-Method: POST
-Headers:
-makefile
-Copy code
-Authorization: Token your_token_here
-Body:
-json
-Copy code
-{
-    "task_id": 1
-}
-Response:
-json
-Copy code
-{
-    "done": true
-}
-6. Delete Task
-URL: /delete/
-Method: DELETE
-Headers:
-makefile
-Copy code
-Authorization: Token your_token_here
-Body:
-json
-Copy code
-{
-    "task_id": 1
-}
-Response:
-json
-Copy code
-{
-    "done": true
-}
-How to Run
-Clone this repository.
-Install dependencies:
-bash
-Copy code
-pip install -r requirements.txt
-Run migrations:
-bash
-Copy code
-python manage.py migrate
-Start the server:
-bash
-Copy code
-python manage.py runserver
+## Overview
+The Task Management API is a RESTful web service that enables users to manage their tasks efficiently. It provides features for user authentication, task creation, retrieval, updating, and deletion. This API is designed to facilitate task management for individuals or teams.
+
+## Features
+- **User Authentication**: Secure login using token-based authentication.
+- **Task Management**:
+  - Create new tasks with descriptions and due dates.
+  - Retrieve a list of all tasks.
+  - Update existing tasks, including changing descriptions and due dates.
+  - Delete tasks when they are no longer needed.
+  
+## Technologies Used
+- Python 3.x
+- Django 5.x
+- Django REST Framework
+- SQLite (or any other database of your choice)
+
+## Getting Started
+
+### Prerequisites
+Before you begin, ensure you have the following installed:
+- Python 3.x
+- pip (Python package installer)
+
+
