@@ -24,4 +24,97 @@ Before you begin, ensure you have the following installed:
 - Python 3.x
 - pip (Python package installer)
 
+## API Endpoints
+
+### Authentication
+
+- **POST /signin/**
+  - **Description**: Authenticates a user and returns a token.
+  - **Request Body**:
+    ```json
+    {
+      "username": "your_username",
+      "password": "your_password"
+    }
+    ```
+  - **Response**:
+    ```json
+    {
+      "authenticated": true,
+      "token": "Token your_token_here"
+    }
+    ```
+  - **Responses on Failure**:
+    ```json
+    {
+      "authenticated": false,
+      "token": null
+    }
+    ```
+
+### Task Management Endpoints
+
+- **GET /all/**
+  - **Description**: Retrieve all tasks.
+  - **Authorization**: Requires token authentication.
+
+- **POST /new/**
+  - **Description**: Create a new task.
+  - **Authorization**: Requires token authentication.
+  - **Request Body**:
+    ```json
+    {
+      "description": "Task description",
+      "due_in": 5 // Due date in days from today
+    }
+    ```
+  - **Response**:
+    ```json
+    {
+      "done": true
+    }
+    ```
+
+- **POST /update/**
+  - **Description**: Update an existing task.
+  - **Authorization**: Requires token authentication.
+  - **Request Body**:
+    ```json
+    {
+      "task_id": 1,
+      "description": "Updated task description",
+      "due_in": 3 // Due date in days from today
+    }
+    ```
+  - **Response**:
+    ```json
+    {
+      "done": true
+    }
+    ```
+
+- **DELETE /delete/**
+  - **Description**: Delete a task.
+  - **Authorization**: Requires token authentication.
+  - **Request Body**:
+    ```json
+    {
+      "task_id": 1
+    }
+    ```
+  - **Response**:
+    ```json
+    {
+      "done": true
+    }
+    ```
+
+## Error Handling
+Common error responses include:
+- **400 Bad Request**: Returned when the request body is malformed.
+- **401 Unauthorized**: Returned when authentication fails.
+- **403 Forbidden**: Returned when access is denied.
+- **404 Not Found**: Returned when a task with the specified ID does not exist.
+- **500 Internal Server Error**: Returned for unexpected server errors.
+
 
